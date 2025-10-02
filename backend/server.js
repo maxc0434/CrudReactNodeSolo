@@ -39,6 +39,22 @@ app.get ("/", (req, res) => {
     });
 });
 
+app.post ("/create", (req, res) => {
+    const sql = "INSERT INTO jeux (`name`, `caption`, `price`, `photo`) VALUES (?)";
+    const values = [
+        req.body.name,
+        req.body.caption,
+        req.body.price,
+        req.body.photo,
+    ];
+    database.query(sql, [values], (err, data) => {
+        if (err) {
+            return res.status(500).json("Error");
+        }
+        return res.json(data);
+    })
+})
+
 
 
 
