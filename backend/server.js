@@ -39,22 +39,48 @@ app.get ("/", (req, res) => {
     });
 });
 
-app.post ("/create", (req, res) => {
-    const sql = "INSERT INTO jeux (`name`, `caption`, `price`, `photo`) VALUES (?)";
-    const values = [
-        req.body.name,
-        req.body.caption,
-        req.body.price,
-        req.body.photo,
-    ];
-    database.query(sql, [values], (err, data) => {
-        if (err) {
-            return res.status(500).json("Error");
-        }
-        return res.json(data);
+    app.post ("/create", (req, res) => {
+        const sql = "INSERT INTO jeux (`name`, `caption`, `price`, `photo`) VALUES (?)";
+        const values = [
+            req.body.name,
+            req.body.caption,
+            req.body.price,
+            req.body.photo,
+        ];
+        database.query(sql, [values], (err, data) => {
+            if (err) {
+                return res.status(500).json("Error");
+            }
+            return res.json(data);
+        })
     })
-})
 
+    app.get("/jeux/:id", (req, res) => {
+        const sql = "SELECT * FROM jeux WHERE id = ?";
+        database.query(sql, [req.params.id], (err, data) => {
+            if (err) return res.status(500).json(err);
+            return res.json(data[0]); // Renvoie le jeu spécifique
+        });
+    });
+
+    app.put("/jeux/:id", (req, res) => {
+        const sql = "UPDATE jeux SET name=?, caption=?, price=?, photo=? WHERE id=?";
+        const values = [req.body.name, req.body.caption, req.body.price, req.body.photo, req.params.id];
+        database.query(sql, values, (err, data) => {
+            if (err) return res.status(500).json(err);
+            return res.json("Update successful");
+        });
+    });
+    
+app.delete('/jeux/:id', (req, res) => {
+  const sql = "DELETE FROM jeux Where id =?"; // Requête SQL delete
+  const id = req.params.id;  // Récupère l'ID depuis l'URL
+
+  database.query(sql, [id], (err, data) => {
+    if(err) return res.json("Error"); // Retourne une erreur si échec
+    return res.json(data);            // Retourne la réponse SQL
+  })
+})
 
 
 

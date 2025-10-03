@@ -12,6 +12,16 @@ function Games() {
       .catch((err) => console.log(err));
   });
 
+
+      const handleDelete = async (id) => {
+        try {
+            await axios.delete('http://localhost:8081/jeux/' + id)  
+            window.location.reload()  
+        } catch(err) {
+            console.log(err); 
+        }
+    }
+
   return (
     // <div className="d-flex vh-100 justify-content-center align-items-center listDiv">
     //     <div className="w-50 bg-white rounded border border-dark">
@@ -54,8 +64,8 @@ function Games() {
             <div className="col-md-4 mb-4" key={i}>
               <div className="card h-100 m-3">
                 <img
+                  className="card-img-top w-50"
                   src={data.photo}
-                  className="card-img-top"
                   alt=""
                   style={{ height: "200px", objectFit: "cover" }}
                 />
@@ -65,7 +75,8 @@ function Games() {
                   <p className="card-text">
                     <strong>{data.price} €</strong>
                   </p>
-                  <button className="btn btn-primary">Modifier</button>
+                  <Link to={`/update/${data.id}`} className="btn btn-primary">Modifier</Link>
+                  <button className="btn btn-danger" onClick={ e => handleDelete(data.id)}> Supprimer</button>
                 </div>
               </div>
             </div>
@@ -73,6 +84,7 @@ function Games() {
         </div>
           <div className="d-flex bg-white justify-content-center align-items-center">
             <Link to="/create" className="btn btn-success">Ajouter</Link>
+
           </div>
       </div>
     </div>
