@@ -26,10 +26,10 @@ function CreateGames() {
 <div className='d-flex vh-100 bg-primary justify-content-center align-item-center'>
             <div className='w-50 bg-white rounded p-3'>
                 <form onSubmit={handleSubmit} >  {/* Appelle handleSubmit au submit */}
-                    <h2 className='fw-bolder mb-5'> Ajouter un Jeu </h2>
+                    <h2 className='fw-bolder mb-5 text-center'> Ajouter un Jeu </h2>
                     
-                    <div className='mb-2 '>
-                        <label htmlFor="" className='me-2'> Nom </label>
+                    <div className='mb-2 text-center'>
+                        <label htmlFor="" className='me-2 '> Nom </label>
                         <input 
                             placeholder='Tapez le nom du jeu ' 
                             className='form-control w-50 mx-auto' 
@@ -38,7 +38,7 @@ function CreateGames() {
                         />
                     </div>
 
-                    <div className='mb-2'>
+                    <div className='mb-2 text-center'>
                         <label htmlFor="" className='me-2'> Description </label>
                         <input 
                             placeholder=' Tapez la description du jeu' 
@@ -48,7 +48,7 @@ function CreateGames() {
                         />   
                     </div>
                     
-                    <div className='mb-2'>
+                    <div className='mb-2 text-center'>
                         <label htmlFor="" className='me-2'> Prix </label>
                         <input 
                             placeholder='Tapez le prix du jeu' 
@@ -58,7 +58,7 @@ function CreateGames() {
                         />   
                     </div>
 
-                    <div className='mb-2'>
+                    <div className='mb-2 text-center'>
                         <label htmlFor="" className='me-2'> Illustration </label>
                         <input 
                             placeholder='coller URL de la photo' 
@@ -69,7 +69,9 @@ function CreateGames() {
                     </div>
 
                     {/* Bouton pour soumettre le formulaire */}
-                    <button className='btn btn-outline-success mt-3'>Soumettre</button>
+                    <div className="text-center">
+                    <button className='btn btn-outline-success mt-3 rounded-pill'>Soumettre</button>
+                    </div>
                 </form>
             </div>
         </div>

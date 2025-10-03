@@ -27,11 +27,10 @@ function UpdateGames() {
             setPhoto(data.photo);
     
         } catch (error) {
-            navigate("/");
         }};
 
     fetchData();
-}, [id, navigate]);
+}, [id]);
 
 
 
@@ -100,7 +99,7 @@ function UpdateGames() {
 
                     {/* Bouton pour soumettre le formulaire */}
                     <div className="text-center">
-                    <button className='btn btn-outline-success mt-3 '>Soumettre</button>
+                    <button className='btn btn-outline-success mt-3 rounded-pill'>Soumettre</button>
                     </div>
                 </form>
             </div>

@@ -59,31 +59,31 @@ function Games() {
     <div className="d-flex vh-100 justify-content-center align-items-center listDiv">
       <div className="w-75 bg-white rounded border border-dark">
         <h1 className="mt-2 text-center">Liste des Jeux</h1>
-        <div className="row">
+        <div className="row ">
           {jeux.map((data, i) => (
             <div className="col-md-4 mb-4" key={i}>
-              <div className="card h-100 m-3">
+              <div className="card h-100 m-3 d-flex justify-content-center align-items-center">
                 <img
-                  className="card-img-top w-50"
+                  className="card-img-top w-50 mt-5"
                   src={data.photo}
                   alt=""
                   style={{ height: "200px", objectFit: "cover" }}
                 />
-                <div className="card-body">
+                <div className="card-body ">
                   <h5 className="card-title">{data.name}</h5>
                   <p className="card-text">{data.caption}</p>
                   <p className="card-text">
                     <strong>{data.price} €</strong>
                   </p>
-                  <Link to={`/update/${data.id}`} className="btn btn-primary">Modifier</Link>
-                  <button className="btn btn-danger" onClick={ e => handleDelete(data.id)}> Supprimer</button>
+                  <Link to={`/update/${data.id}`} className="btn btn-primary rounded-pill">Modifier</Link>
+                  <button className="btn btn-danger ms-1 rounded-pill" onClick={ e => handleDelete(data.id)}> Supprimer</button>
                 </div>
               </div>
             </div>
           ))}
         </div>
           <div className="d-flex bg-white justify-content-center align-items-center">
-            <Link to="/create" className="btn btn-success">Ajouter</Link>
+            <Link to="/create" className="btn btn-outline-success mb-3 mt-5 rounded-pill">Ajouter un Jeu</Link>
 
           </div>
       </div>
